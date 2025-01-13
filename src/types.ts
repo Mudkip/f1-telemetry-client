@@ -68,4 +68,6 @@ export type EventKeys =
   | 'Flashback'
   | 'ButtonStatus'
   | 'RedFlag'
-  | 'Overtake';
+  | 'Overtake'
+  | 'SafetyCar'
+  | 'Collision';
