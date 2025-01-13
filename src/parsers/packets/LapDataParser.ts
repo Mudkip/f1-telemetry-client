@@ -1,5 +1,5 @@
-import {F1Parser} from '../F1Parser';
-import {LapData} from './types';
+import { F1Parser } from '../F1Parser';
+import { LapData } from './types';
 
 export class LapDataParser extends F1Parser<LapData> {
   constructor(packetFormat: number) {
@@ -13,14 +13,25 @@ export class LapDataParser extends F1Parser<LapData> {
       this.floatle('m_lastLapTime').floatle('m_currentLapTime');
     }
 
-    if (packetFormat >= 2020) this.uint16le('m_sector1TimeInMS');
-    if (packetFormat >= 2023) this.uint8('m_sector1TimeMinutes');
-    if (packetFormat >= 2020) this.uint16le('m_sector2TimeInMS');
+    if (packetFormat >= 2024) {
+      this.uint16le('m_sector1TimeMSPart')
+        .uint8('m_sector1TimeMinutesPart')
+        .uint16le('m_sector2TimeMSPart')
+        .uint8('m_sector2TimeMinutesPart')
+        .uint16le('m_deltaToCarInFrontMSPart')
+        .uint8('m_deltaToCarInFrontMinutesPart')
+        .uint16le('m_deltaToRaceLeaderMSPart')
+        .uint8('m_deltaToRaceLeaderMinutesPart');
+    } else {
+      if (packetFormat >= 2020) this.uint16le('m_sector1TimeInMS');
+      if (packetFormat >= 2023) this.uint8('m_sector1TimeMinutes');
+      if (packetFormat >= 2020) this.uint16le('m_sector2TimeInMS');
 
-    if (packetFormat >= 2023) {
-      this.uint8('m_sector2TimeMinutes')
-        .uint16le('m_deltaToCarInFrontInMS')
-        .uint16le('m_deltaToRaceLeaderInMS');
+      if (packetFormat >= 2023) {
+        this.uint8('m_sector2TimeMinutes')
+          .uint16le('m_deltaToCarInFrontInMS')
+          .uint16le('m_deltaToRaceLeaderInMS');
+      }
     }
 
     if (packetFormat >= 2018 && packetFormat <= 2020) {
@@ -80,6 +91,10 @@ export class LapDataParser extends F1Parser<LapData> {
         .uint16le('m_pitLaneTimeInLaneInMS')
         .uint16le('m_pitStopTimerInMS')
         .uint8('m_pitStopShouldServePen');
+    }
+
+    if (packetFormat >= 2024) {
+      this.floatle('m_speedTrapFastestSpeed').uint8('m_speedTrapFastestLap');
     }
   }
 }
