@@ -11,6 +11,7 @@ import type {
   PacketParticipantsDataParser,
   PacketSessionDataParser,
   PacketSessionHistoryDataParser,
+  PacketTimeTrialDataParser,
 } from './parsers/packets';
 import type {PacketTyreSetsDataParser} from './parsers/packets/PacketTyreSetsDataParser';
 import type {PacketMotionExDataParser} from './parsers/packets/PacketMotionExDataParser';
@@ -41,7 +42,8 @@ export type PacketParser =
   | PacketFinalClassificationDataParser
   | PacketLobbyInfoDataParser
   | PacketTyreSetsDataParser
-  | PacketMotionExDataParser;
+  | PacketMotionExDataParser
+  | PacketTimeTrialDataParser;
 
 export interface ParsedMessage {
   packetID: string;

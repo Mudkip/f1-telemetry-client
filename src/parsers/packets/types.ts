@@ -486,6 +486,25 @@ export interface PacketLobbyInfoData extends PacketBase {
   m_lobbyPlayers: LobbyInfoData[];
 }
 
+export interface TimeTrialDataset {
+  m_carIdx: number;
+  m_teamId: number;
+  m_lapTimeInMS: number;
+  m_sector1TimeInMS: number;
+  m_sector2TimeInMS: number;
+  m_sector3TimeInMS: number;
+  m_tractionControl: number;
+  m_gearBoxAssist: number;
+  m_antiLockBrakes: number;
+  m_equalCarPerformance: number;
+}
+
+export interface PacketTimeTrialData extends PacketBase {
+  m_playerSessionBestDataSet: TimeTrialDataset[];
+  m_personalBestDataSet: TimeTrialDataset[];
+  m_rivalDataSet: TimeTrialDataset[];
+}
+
 export interface LapHistoryData {
   m_lapTimeInMS: number;
   m_sector1TimeInMS: number;

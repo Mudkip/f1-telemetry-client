@@ -19,11 +19,12 @@ import {
   PacketParticipantsDataParser,
   PacketSessionDataParser,
   PacketSessionHistoryDataParser,
+  PacketTimeTrialDataParser,
+  PacketTyreSetsDataParser,
+  PacketMotionExDataParser,
 } from './parsers/packets';
 import * as packetTypes from './parsers/packets/types';
 import {Address, Options, ParsedMessage} from './types';
-import {PacketTyreSetsDataParser} from './parsers/packets/PacketTyreSetsDataParser';
-import {PacketMotionExDataParser} from './parsers/packets/PacketMotionExDataParser';
 import {PacketHeader} from './parsers/packets/types';
 
 const DEFAULT_PORT = 20777;
@@ -163,6 +164,9 @@ class F1TelemetryClient extends EventEmitter {
 
       case PACKETS.motionEx:
         return PacketMotionExDataParser;
+
+      case PACKETS.timeTrial:
+        return PacketTimeTrialDataParser;
 
       default:
         return null;
