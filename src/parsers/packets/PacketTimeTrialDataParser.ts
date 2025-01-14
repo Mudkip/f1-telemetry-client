@@ -1,6 +1,6 @@
 import {F1Parser} from '../F1Parser';
 import {PacketHeaderParser} from './PacketHeaderParser';
-import { TimeTrialParserDataSetParser } from './TimeTrialParserDataSetParser';
+import {TimeTrialParserDataSetParser} from './TimeTrialParserDataSetParser';
 import {PacketTimeTrialData} from './types';
 
 export class PacketTimeTrialDataParser extends F1Parser<PacketTimeTrialData> {

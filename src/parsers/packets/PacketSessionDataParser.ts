@@ -1,4 +1,4 @@
-import { Parser } from 'binary-parser';
+import {Parser} from 'binary-parser';
 import {F1Parser} from '../F1Parser';
 
 import {MarshalZoneParser} from './MarshalZoneParser';
@@ -127,7 +127,7 @@ export class PacketSessionDataParser extends F1Parser<PacketSessionData> {
           type: new Parser().uint8(''),
         })
         .floatle('m_sector2LapDistanceStart')
-        .floatle('m_sector3LapDistanceStart')
+        .floatle('m_sector3LapDistanceStart');
     }
 
     this.data = this.fromBuffer(buffer);

@@ -1,5 +1,5 @@
 import {F1Parser} from '../F1Parser';
-import {MarshalZone, TimeTrialDataset} from './types';
+import {TimeTrialDataset} from './types';
 
 export class TimeTrialParserDataSetParser extends F1Parser<TimeTrialDataset> {
   constructor() {
@@ -16,6 +16,6 @@ export class TimeTrialParserDataSetParser extends F1Parser<TimeTrialDataset> {
       .uint8('m_antiLockBrakes')
       .uint8('m_equalCarPerformance')
       .uint8('m_customSetup')
-      .uint8('m_valid')
+      .uint8('m_valid');
   }
 }
